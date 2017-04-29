@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script type="application/javascript">
+        var socket = io("http://localhost:3000");
+        socket.on('box',function(data){
+            var box = '';
+            for (i = 0;i < 25; i++){
+                box += '<div id="box_'+i+'" style="background-color: '+data.boxes[i]+'"></div>';
+            }
+            document.getElementById("randombox").innerHTML= box;
+        });
+    </script>
+	</head>
+  <body>
+    <h1><%= title %></h1>
+    <div id="randombox"></div>      
+  </body>
+</html>
